@@ -30,7 +30,7 @@ class ChatClient {
         console.log("ChatClient");
 
         const isProduction = process.env.NODE_ENV === 'production';
-        this._baseURL = isProduction ? RENDER_SERVER_URL : `${LOCAL_SERVER_URL}:${this._chatPort}`;
+        this._baseURL = process.env.NODE_ENV === 'production' ? RENDER_SERVER_URL : `${LOCAL_SERVER_URL}:${this._chatPort}`;
         this.database = new Database();
 
         this.getMessages();
